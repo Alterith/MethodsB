@@ -1,0 +1,396 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath} 
+\usepackage{physics}
+\usepackage{amssymb}
+\numberwithin{equation}{section}
+\begin{document}
+	\title{Methods B Assignment}
+	\author{Dhruv Bhugwan}
+	\maketitle
+	\begin{equation}
+		%\eta^2R''(\eta) + 2\eta R'(\eta) + \eta^2R(\eta) = 0
+		%\frac{\partial \rho}{\partial t}
+		\pdv[2]{\rho}{t} = \frac{c^2}{r^2} \frac{\partial}{\partial r} \left(r^2 \pdv{\rho}{r}\right)\tag{1}\label{SphericalDensity}
+	\end{equation}
+	\section{}
+		Assume
+		\begin{equation}
+			\rho(t,r) = T(t) R(r)\label{densitySplit}
+		\end{equation}
+	 	Substituting \ref{densitySplit} into \ref{SphericalDensity} we obtain
+		\begin{equation*}
+			\begin{split}
+				T''(t) R(r) &= \frac{c^2}{r^2} \frac{\partial}{\partial r} (r^2 T(t)R'(r))\\
+				&=\frac{c^2}{r^2} \left[2r T(t) R'(r) + r^2 T(t) R''(r) \right]\\
+				&= c^2 \left[\frac{2}{r} T(t) R'(r) + T(t) R''(r) \right]\\
+				&= \frac{2 c^2}{r} T(t) R'(r) + c^2 T(t) R''(r)\\
+				&= T(t) \left[\frac{2 c^2}{r} R'(r) + c^2 R''(r)\right]\\
+			\end{split}
+		\end{equation*}
+		
+		\begin{equation}\label{SeperatedDensity}
+			\implies\quad \frac{T''(t)}{T(t)} = \frac{2 \frac{c^2}{r} R(r) + c^2 R''(r)}{R(r)}
+		\end{equation}
+		Since each of the above expressions on the LHS and RHS of \ref{SeperatedDensity} are 						expressions with respect to different variables the ratios on either side of the equation 				must remain constant. Let us call this constant \(\sigma\). Thus \ref{SeperatedDensity} 					becomes:
+		
+		\begin{equation}\label{SeperatedDensityConstant}
+			\frac{T''(t)}{T(t)} = \frac{2 \frac{c^2}{r} R(r) + c^2 R''(r)}{R(r)} = \sigma
+		\end{equation}
+		\(\therefore\)
+
+		\begin{align} 
+			\begin{split}
+				&\frac{T''(t)}{T(t)} = \sigma \\
+				&\implies T''(t) = \sigma T(t) \\
+				&\implies T''(t) - \sigma T(t) = 0\label{sigmaTimeFunction}
+			\end{split}
+		\end{align}	
+		
+		and	
+		\begin{align}  
+			\begin{split}
+				\hspace{42mm}&\frac{2 \frac{c^2}{r} R(r) + c^2 R''(r)}{R(r)} = \sigma\\
+				&\implies 2 \frac{c^2}{r} R(r) + c^2 R''(r) = R(r) \sigma\\
+				\intertext{     multiplying by \(r^2\) and dividing by \(c^2\)  yeilds}\\
+				&2 r R'(r) + r^2 R''(r) = \frac{r^2}{c^2} R(r) \sigma\\
+				&2 r R'(r) + r^2 R''(r) - \frac{r^2}{c^2} R(r) \sigma = 0 \label{sigmaRadialFunction}
+				%&\implies T''(t) - \sigma T(t) = 0\label{sigmaTimeFunction}
+			\end{split}
+		\end{align} 
+		
+		Setting \(\sigma\) to \(-\lambda^2\) we obtain 
+		
+		\begin{equation}
+			T''(t) + \lambda^2 T(t) = 0 \label{lambdaTimeFunction}
+		\end{equation}
+		
+		from \ref{sigmaTimeFunction} and
+		
+		\begin{equation}
+			2 r R'(r) + r^2 R''(r) + \frac{\lambda^2}{c^2} r^2 R(r) = 0 \label{lambdaRadialFunction}
+		\end{equation}
+		
+		from \ref{sigmaRadialFunction}.
+		\section{}
+		The general solution for \ref{lambdaTimeFunction} can be obtained using its characteristic equation. 			Let \(\epsilon\) denote the roots of the equation.
+		The characteristic equation is given by:
+		
+		\begin{equation*}
+			\begin{split}
+				&\epsilon^2 + \lambda^2 = 0\\
+				\implies &\epsilon = \pm\lambda i
+			\end{split}
+		\end{equation*}
+		thus
+		\begin{equation*}
+			T(t) = A e^{\lambda i t} + B e^{-\lambda i t} \quad\text{for A,B constant}
+		\end{equation*}
+		Using Eulers formula for complex exponentials we obtain
+		\begin{equation}
+			T(t) = c_1 \sin(\lambda t) + c_2 \cos(\lambda t) \quad\text{for arbitrary \(c_1\),\(c_1\) } \label{TimeGeneralSolution}
+		\end{equation}
+		
+		\section{}
+		Let		
+		\begin{equation}
+			r = \frac{c \eta}{\lambda} \left(\implies \eta = \frac{\lambda r}{c}\right) \label{etaSubstitution}
+		\end{equation}
+		%
+		thus
+		\begin{equation}\label{etaDerivitive}
+			\begin{split}
+				\frac{dr}{d \eta} = \frac{c}{\lambda}\\\\
+				\implies \frac{d \eta}{dr} = \frac{\lambda}{c} 
+			\end{split}
+		\end{equation}
+		%
+		To make the substitution \ref{etaSubstitution} into \ref{lambdaRadialFunction} we need R and its derivitives in terms of \(\eta\).
+		For the first derivitive we have
+		%
+		\begin{align}\label{R'Eta}
+			\begin{split}
+				\frac{dR}{d \eta} = \frac{dR}{dr} \frac{dr}{d \eta}\\
+				\implies \frac{dR}{dr} = \frac{dR}{d \eta} \frac{d \eta}{dr}\\
+				\text{from \ref{etaDerivitive} we obtain}\\ 
+				\frac{dR}{dr} = \frac{dR}{d \eta} \frac{\lambda}{c} = \frac{\lambda}{c} \frac{dR}{d \eta}\\
+			\end{split}
+		\end{align}
+		%
+		\begin{align}\label{R''Eta}
+			\begin{split}
+			\text{and for the second derivitive we have}\\
+				\frac{d^2R}{d \eta^2} &= \frac{d}{d \eta} \left(\frac{dR}{d \eta}\right)\\
+				\text{from \ref{R'Eta} we have}\\
+				&= \frac{d}{d \eta} \left(\frac{dR}{dr} \frac{dr}{d \eta} \right)\\
+				&= \frac{d^2 R}{dr d \eta} \frac{dr}{d \eta} + \frac{dR}{dr} \frac{d^2 r}{d \eta^2}\\
+				&= \frac{d^2 R}{dr d \eta} \frac{dr}{d \eta} + \frac{dR}{dr} \frac{d}{d \eta} \left(\frac{\lambda}{c}\right)\\
+				&= \frac{d^2 R}{dr d \eta} \frac{dr}{d \eta} + 0\\
+				&= \frac{d}{dr} \left(\frac{dR}{d \eta}\right) \frac{dr}{d \eta}\\
+				\text{from \ref{R'Eta} we have}\\
+				&= \frac{d}{dr} \left(\frac{dR}{dr} \frac{dr}{d \eta}\right) \frac{dr}{d \eta}\\
+				&= \left(\frac{d^2 R}{dr^2} \frac{dr}{d \eta} + \frac{dR}{dr} \frac{d}{dr} \left[\frac{c}{\lambda}\right]\right) \frac{dr}{d \eta}\\
+				&= \left(\frac{d^2 R}{dr^2} \frac{c}{\lambda} + 0 \right) \frac{dr}{d \eta}\\
+				&= \frac{d^2 R}{dr^2} \frac{c^2}{\lambda^2}\\
+			\end{split}
+		\end{align}	
+		%
+		Thus substituting \ref{R'Eta}, \ref{R''Eta} and \ref{etaSubstitution} into \ref{lambdaRadialFunction} we obtain
+		%
+		\begin{align}\label{etaRadialFunction}
+			\begin{split}
+			\left(\frac{c \eta}{\lambda}\right)^2 R''(r) + 2 \frac{c \eta}{\lambda} R'(r) + \frac{\lambda^2}{c^2} \left(\frac{c \eta}{\lambda}\right)^2 R(r) &= 0\\
+			\implies \eta^2 R''(\eta) + 2 \eta R'(\eta) + \eta^2 R(\eta) = 0
+			\end{split}	
+		\end{align}		
+		%
+		\section{}	
+		From \ref{etaRadialFunction} we have to evaluate if the system is analytic at \(\eta_0\) = 0.
+		
+		\begin{align*}
+			\begin{split}
+			&\left.\frac{2 \eta}{\eta^2}\right|_{\eta_0=0} = \left.\frac{2}{\eta}\right|_{\eta_0=0}\\
+			&\text{The above term tends to infinity thus it is undefined at \(\eta_0\).}\\
+			&\left.\frac{\eta^2}{\eta^2}\right|_{\eta_0=0} = \left.\frac{1}{1}\right|_{\eta_0=0} = 1\\
+			&\text{Which is clearly defined.}\\
+			\end{split}
+		\end{align*}
+		
+		Thus \ref{etaRadialFunction} is not analytic at \(\eta_0\) = 0 but we do have 1 finite value
+		thus the point is singular. Now we need to test it it is regular singular or not.
+		
+		\begin{align*}
+			\begin{split}
+			&\left.\frac{(\eta -0) 2 \eta}{\eta^2}\right|_{\eta_0=0} = \left.\frac{2}{1}\right|_{\eta_0=0} = 2\\
+			&\text{The above term is finite at \(\eta_0\).}\\
+			&\left.\frac{(\eta - 0)^2 \eta^2}{\eta^2}\right|_{\eta_0=0} = \left.\frac{\eta^2}{1}\right|_{\eta_0=0} = 0\\
+			&\text{Which is clearly finite.}\\
+			\end{split}
+		\end{align*}
+		Thus \ref{etaRadialFunction} is a regular singular point at \(\eta_0\) = 0
+		
+		\section{}
+		Since \ref{etaRadialFunction} is regular singular we may express it as a power series about \(\eta_0\) = 0 using the frobenius method.
+		Thus
+		\begin{align}\label{powerExpansion}
+			\begin{split}
+				R(\eta) &= \sum_{n = 0}^{\infty} a_n \eta^{n+r}\\
+				\implies R'(\eta) &= \sum_{n = 0}^{\infty} (n+r)a_n \eta^{n+r-1}\\
+				\implies R''(\eta) &= \sum_{n = 0}^{\infty} (n+r)(n+r-1)a_n \eta^{n+r-2}\\
+			\end{split}
+		\end{align}
+		
+		Substituting \ref{powerExpansion} into \ref{lambdaRadialFunction} we obtain
+		\begin{align}\label{FrobeniusSubs}
+			\begin{split}
+				&\eta^2 \sum_{n = 0}^{\infty} (n+r)(n+r-1)a_n \eta^{n+r-2} + \\
+				&2\eta \sum_{n = 0}^{\infty} (n+r)a_n \eta^{n+r-1} + \\
+				&\eta^2 \sum_{n = 0}^{\infty} a_n \eta^{n+r} = 0\\
+				\implies &\sum_{n = 0}^{\infty} (n+r)(n+r-1)a_n \eta^{n+r} + \\
+				&2 \sum_{n = 0}^{\infty} (n+r)a_n \eta^{n+r} + \\
+				&\sum_{n = 0}^{\infty} a_n \eta^{n+r+2} = 0\\
+				\implies &\sum_{n = 0}^{\infty} (n+r)(n+r-1)a_n \eta^{n+r} + \\
+				&\sum_{n = 0}^{\infty} 2(n+r)a_n \eta^{n+r} + \\
+				&\sum_{n = 2}^{\infty} a_{n-2} \eta^{n+r} = 0\\
+				\implies &\sum_{n = 2}^{\infty} \left[(n+r)(n+r-1)a_n + (n+r)a_n + a_{n-2} \right]\eta^{n+r} + \\
+				&r(r-1)a_0 \eta^r +2ra_0 \eta^r + r(r+1)a_1 \eta^{r+1} +2(r+1)a_1 \eta^{r+1} = 0\\
+				\implies &\sum_{n = 2}^{\infty} \left[(n+r)a_n(r+n-1+2) + a_{n-2} \right]\eta^{n+r} + \\
+				& ra_0\eta^r(r-1+2) + (r+1)a_1\eta^{r+1}(r+2)= 0\\
+				\implies &\sum_{n = 2}^{\infty} \left[(n+r)a_n(r+n+1) + a_{n-2} \right]\eta^{n+r} + \\
+				& ra_0\eta^r(r+1) + (r+1)a_1\eta^{r+1}(r+2)= 0\\
+			\end{split}
+		\end{align}
+		Thus the recurrence relation is given by
+		\begin{align}\label{RecurrenceRelation}
+			\begin{split}
+				a_n(n+r)(r+n+1) + a_{n-2} = 0\\
+				\implies a_n = \frac{-a_{n-2}}{(n+r)(r+n+1)}
+			\end{split}
+		\end{align}
+		and the indicial equations are given by 
+		
+		\begin{align}\label{a0Indicial}
+			\begin{split}
+				& r(r+1)a_0= 0\\
+			\end{split}
+		\end{align}
+		and
+				\begin{align}\label{a1Indicial}
+			\begin{split}
+				&(r+1)(r+2)a_1= 0\\
+			\end{split}
+		\end{align}
+		
+		\section{}
+		Investigating equation \ref{a0Indicial} and knowing that \(a_0\) is arbitrary only defined by the initial conditions of the system we find that the roots of the equation are given by 
+		
+		\begin{align*}
+			\begin{split}
+				&r = 0\\
+				&\text{or}\\
+				&r = -1
+			\end{split}
+		\end{align*}
+		%
+		Thus clearly the smaller root of \ref{a0Indicial} is r = -1. Since \ref{RecurrenceRelation} is a second order difference equation we may be able to find terms for the odd and even terms respectively though here we will only find the expression for the even terms of \(a_n\).
+	Substituting r = -1 into \ref{RecurrenceRelation} and solving for even n we obtain
+		\begin{align}\label{evenAk}
+			\begin{split}
+				&a_n = \frac{-a_{n-2}}{(n-1)(n-1+1)}\\
+				\implies&a_n = \frac{-a_{n-2}}{(n)(n-1)}\\
+				\implies&a_2 = \frac{-a_{0}}{(2)(1)} \\
+				\implies&a_4 = \frac{-a_{2}}{(4)(3)} = \frac{a_{0}}{(4)(3)(2)(1)}\\
+				\implies&a_6 = \frac{-a_{4}}{(6)(5)} = \frac{-a_{0}}{(6)(5)(4)(3)(2)(1)}\\
+				\therefore\quad&a_{2k} = \frac{(-1)^{k}a_{0}}{(2k)!}
+				\text{   Where k is an arbitrary integer.}\\
+			\end{split}
+		\end{align}
+		%
+		Using the Frobenius method a solution for the differential equation is given by
+		%
+		\begin{align}
+			\begin{split}
+				R_1(\eta) &= \eta^r\left(\sum_{n=0}^{\infty}a_{n}\eta^n\right)\\
+				&= \eta^{-1}\left(\sum_{k=0}^{\infty}a_{2k}\eta^{2k}\right)\\
+				&= \eta^{-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^{2k}a_{0}}{(2k)!}\eta^{2k}\right)\\
+				&\text{Since \(a_0\) is arbitrary set it to 1}\\
+				\implies&= \eta^{-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^{2k}}{(2k)!}\eta^{2k}\right)\\
+				&\text{We recognise the series as the Maclauren series for cos(\(\eta\))}\\
+				\therefore R_1(\eta) & = \eta^{-1}\left(cos(\eta)\right)\\
+				&= \frac{cos(\eta)}{\eta} 
+			\end{split}
+		\end{align}
+		%
+		\section{}
+		
+		Given -1 satisfies \ref{a1Indicial} a second solution may be obtained for \ref{etaRadialFunction} as \(a_1\) is not zero but depending on our initial equations it may be zero.
+		since \ref{etaRadialFunction} is a second order differential equation and we have already found an expression for the even n terms of \(a_n\) we may also find an expression for the odd terms.
+		Substituting r = -1 into \ref{RecurrenceRelation} and solving for odd n we obtain
+		\begin{align}\label{oddAk}
+			\begin{split}
+				&a_n = \frac{-a_{n-2}}{(n-1)(n-1+1)}\\
+				\implies&a_n = \frac{-a_{n-2}}{(n)(n-1)}\\
+				\implies&a_3 = \frac{-a_{1}}{(3)(2)} \\
+				\implies&a_5 = \frac{-a_{3}}{(5)(4)} = \frac{a_{1}}{(5)(4)(3)(2)}\\
+				\implies&a_7 = \frac{-a_{5}}{(7)(6)} = \frac{-a_{1}}{(7)(6)(5)(4)(3)(2)}\\
+				\therefore\quad&a_{2k+1} = \frac{(-1)^{k}a_{1}}{(2k +1)!}
+				\text{   Where k is an arbitrary integer.}\\
+			\end{split}
+		\end{align}
+		%
+		Using the Frobenius method the second solution for the differential equation is given by
+		%
+		\begin{align}
+			\begin{split}
+				R_2(\eta) &= \eta^r\left(\sum_{n=0}^{\infty}a_{n}\eta^n\right)\\
+				&= \eta^{-1}\left(\sum_{k=0}^{\infty}a_{2k+1}\eta^{2k}\right)\\
+				&= \eta^{-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^{k}a_{1}}{(2k+1)!}\eta^{2k+1}\right)\\
+				&\text{Since \(a_1\) is arbitrary set it to 1}\\
+				\implies&= \eta^{-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^{k}}{(2k+1)!}\eta^{2k+1}\right)\\
+				&\text{We recognise the series as the Maclauren series for sin(\(\eta\))}\\
+				\therefore R_2(\eta) & = \eta^{-1}\left(sin(\eta)\right)\\
+				&= \frac{sin(\eta)}{\eta} 
+			\end{split}
+		\end{align}
+		%
+		\section{}
+		If
+		\begin{equation*}
+			R(\eta) = a_0\frac{cos(\eta)}{\eta} + a_1\frac{sin(\eta)}{\eta}
+		\end{equation*}
+		and if at \(\eta\) = 0 R(\(\eta\)) is finite lets call this finite value f.
+		%
+		Thus
+		\begin{align}\label{finalEtaR}
+			\begin{split}
+				f &=a_0\lim_{\eta\to\infty}\frac{cos(\eta)}{\eta} + a_1\lim_{\eta\to\infty}\frac{sin(\eta)}{\eta}\\
+				&=a_0\left[\lim_{\eta\to\infty^-}\frac{cos(\eta)}{\eta}\right] +a_0\left[\lim_{\eta\to\infty^+}\frac{cos(\eta)}{\eta}\right] + a_1\lim_{\eta\to\infty}\frac{sin(\eta)}{\eta}\\
+				&\lim_{\eta\to\infty^-}\frac{cos(\eta)}{\eta}\to-\infty\\
+				&\lim_{\eta\to\infty^+}\frac{cos(\eta)}{\eta}\to\infty\\
+				&\lim_{\eta\to\infty}\frac{sin(\eta)}{\eta}\to1\\
+				&\text{Thus since f is finite \(a_0\) must be zero thus}\\
+				&R(\eta) = a_1\frac{sin(\eta)}{\eta}
+			\end{split}
+		\end{align}
+		%
+		\\
+		%
+		\section{}
+		Substituting \ref{etaSubstitution} into \ref{finalEtaR} we obtain
+		\begin{align}\label{finalrR}
+			R(r) = a_1\frac{c}{\lambda r}sin\left(\frac{\lambda r}{c}\right)
+		\end{align}
+		Thus substituting \ref{finalrR} and \ref{TimeGeneralSolution} into \ref{densitySplit} we obtain
+		\begin{align}
+			\rho(t,r) = (c_1 \sin(\lambda t) + c_2 \cos(\lambda t))\left(a_1\frac{c}{\lambda r}sin\left(\frac{\lambda r}{c}\right)\right)
+		\end{align}
+		given \(\rho(t,1) = 0\) we obtain
+		\begin{align}\label{lambdaValue}
+		\begin{split}
+			\rho(t,1) &= (c_1 \sin(\lambda t) + c_2 \cos(\lambda t))\left(a_1\frac{c}{\lambda}sin\left(\frac{\lambda}{c}\right)\right) = 0\\
+			&\text{Assuming \ref{TimeGeneralSolution} is never zero}\\
+			\implies&\left(a_1\frac{c}{\lambda}sin\left(\frac{\lambda}{c}\right)\right) = 0\\
+			\implies&\frac{c}{\lambda}sin\left(\frac{\lambda}{c}\right)=0\\
+			\implies&sin\left(\frac{\lambda}{c}\right)=0\\
+			\implies&\frac{\lambda}{c} = n\pi \quad\text{For arbitrary n where n is an integer}\\
+			\implies &\lambda = c n \pi 
+		\end{split}
+		\end{align}
+		%
+		Substituting the final solution for \(\lambda\) from \ref{lambdaValue} into \ref{finalrR} we obtain
+		\begin{align}\label{finalREquation}
+			\begin{split}
+			R(r) &= a_1\frac{c}{\lambda r}sin\left(\frac{\lambda r}{c}\right)\\
+			&= a_1\frac{c}{c n \pi r}sin\left(\frac{c n \pi r}{c}\right)\\
+			&= a_1\frac{sin\left(n \pi r\right)}{n \pi r}\\
+			\end{split}
+		\end{align}
+		%
+		and substituting \ref{lambdaValue} into \ref{TimeGeneralSolution} we obtain
+		\begin{align}\label{finalTEquation}
+			\begin{split}
+			T(t) &= c_1 \sin(\lambda t) + c_2 \cos(\lambda t)\\
+			&= c_1 \sin(cn\pi t) + c_2 \cos(cn\pi t)\\
+			\end{split}
+		\end{align}
+		Since the sine function is pereodic there exist an infinite number of solutions ans setting \(a_1\) = 0 we have
+		\begin{align}\label{finalRho}
+			\begin{split}
+				\rho(t,r) &= (c_1 \sin(\lambda t) + c_2 \cos(\lambda t))\left(a_1\frac{c}{\lambda r}sin\left(\frac{\lambda r}{c}\right)\right)\\
+				&= \sum_{n = 0}^{\infty} \left(\frac{sin\left(n \pi r\right)}{n \pi r}\right)\left(c_1 \sin(cn\pi t) + c_2 \cos(cn\pi t)\right)
+			\end{split}
+		\end{align}
+		
+		\section{}
+		After some simplifcation we find that \ref{lambdaRadialFunction} becomes
+		\begin{equation*}
+			R''(r) + \frac{2}{r}R'(r) + \frac{\lambda^2}{c^2}R(r) = 0
+		\end{equation*}
+		%
+		comparing this to 
+		
+		\begin{align*}
+			y''(r) + \frac{2}{r}y'(r) + \left(\nu^2 - \frac{l(l+1)}{r^2}\right)
+		\end{align*}
+		We find that their coefficients for the first 2 terms are identical but the difference lies in the fact that the derived radial equation has a constant coefficient wrt to the 0'th derivitive term, whereas the spherical Bessel equation has a coefficient that varies with respect to its parameter.\\ Now comparing the solutions. We find that as time goes on the spherical Bessel function of the second time tends to zero very similar to our case where out cosine term was multiplied by zero as it diverged. Secondly the spherical Bessel function of the first kind is a damped oscillatory function which can be compared to our	sine function in \ref{finalREquation} as it is divided by the term it is being evaluated by clearly over time this decays and thus this is also a damped oscillatory function.\\ Therefore we can clearly see that the Bessel function of the first and second kind may be fairly compared to sine and cosine functions.
+		
+		
+		
+		\begin{thebibliography}{9}
+\bibitem{latexcompanion} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+ 
+\bibitem{einstein} 
+Albert Einstein. 
+\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+ 
+\bibitem{knuthwebsite} 
+Knuth: Computers and Typesetting,
+\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
+\end{thebibliography}
+	
+	
+\end{document}
